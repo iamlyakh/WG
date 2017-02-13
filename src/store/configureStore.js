@@ -1,5 +1,6 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import createLogger from 'redux-logger';
+import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import initialState from './initialState';
 
@@ -10,7 +11,7 @@ export default function configureStore() {
 		rootReducer,
 		initialState,
 		compose(
-			applyMiddleware(logger),
+			applyMiddleware(thunk, logger),
 			typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
 		)
 	);

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import UserList from '../components/UserList';
+import CompareForm from '../components/CompareForm';
 import {bindActionCreators } from 'redux';
 import * as actions from '../actions/Actions';
 
@@ -10,6 +11,7 @@ class App extends Component {
 
 		return <div>
 			<UserList users={users} columns={columns} actions={actions}/>
+            <CompareForm actions={actions}/>
 		</div>
 	}
 }

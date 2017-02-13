@@ -1,13 +1,21 @@
-export function selectUser(id) {
-	return {
-		type: 'SELECT_USER',
-		payload: id
-	}
+export function selectUsers(nameA, nameB) {
+    return (dispatch, getState) => {
+        const {users} = getState();
+
+        dispatch({
+            type: 'SELECT_USERS',
+            payload: {
+                nameA: nameA,
+                nameB: nameB,
+                users: users
+            }
+        });
+    };
 }
 
-export function deleteUser(id) {
+export function deleteUser(name) {
 	return {
 		type: 'DELETE_USER',
-		payload: id
+		payload: name
 	}
 }
