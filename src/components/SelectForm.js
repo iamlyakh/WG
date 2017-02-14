@@ -1,11 +1,11 @@
 import React, {PropTypes, Component} from 'react';
 
-export default class CompareForm extends Component {
+export default class SelectForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nameA: '',
-            nameB: ''
+            nameA: 'a123',
+            nameB: 'b321'
         }
     }
 
@@ -28,8 +28,8 @@ export default class CompareForm extends Component {
 
     render() {
         return <div>
-            <input onInput={::this.setNameA} value={this.state.nameA}/>
-            <input onInput={::this.setNameB} value={this.state.nameB}/>
+            <input onChange={::this.setNameA} value={this.state.nameA}/>
+            <input onChange={::this.setNameB} value={this.state.nameB}/>
             <button onClick={::this.compareUsers}>Сравнить</button>
         </div>
     }

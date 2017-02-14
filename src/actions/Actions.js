@@ -7,10 +7,3 @@ export function selectUsers(nameA, nameB) {
 		}
 	}
 }
-
-export function deleteUser(name) {
-	return {
-		type: 'DELETE_USER',
-		payload: name
-	}
-}

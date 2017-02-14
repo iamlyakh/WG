@@ -2,7 +2,7 @@ const initialState =  {
 	users: [
 	    {
 			id: 1,
-			name: 'SuperPetia228',
+			name: 'a123',
             battlesTotal: 9888,
             winsTotal: 72,
             daysTotal: 999,
@@ -14,7 +14,7 @@ const initialState =  {
 		},
         {
             id: 2,
-            name: 'Dimas1945',
+            name: 'b321',
             battlesTotal: 9888,
             winsTotal: 1022323,
             daysTotal: 999,
