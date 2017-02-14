@@ -1,37 +1,20 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {usersWithRatingSelector, userASelector, userBSelector} from '../selectors/selectors';
-import UserList from '../components/UserList';
-import SelectForm from '../components/SelectForm';
-import CompareTable from '../components/CompareTable';
-import {bindActionCreators } from 'redux';
-import * as actions from '../actions/Actions';
+import {Link} from 'react-router';
 
-class App extends Component {
+export default class App extends Component {
 	render() {
-		const {users, columns, actions, userA, userB} = this.props;
-
 		return <div>
-			<UserList users={users} columns={columns}/>
-            <SelectForm actions={actions}/>
-			<CompareTable userA={userA} userB={userB} columns={columns}/>
+			<header>
+				<nav>
+					<li>
+						<Link to="/" activeClassName="active">User list</Link>
+					</li>
+					<li>
+						<Link to="/compare" activeClassName="active">Compare</Link>
+					</li>
+				</nav>
+			</header>
+			<div>{this.props.children}</div>
 		</div>
 	}
 }
-
-function mapStateToProps(state) {
-	return {
-	    columns: state.columns,
-		users: usersWithRatingSelector(state),
-		userA: userASelector(state),
-		userB: userBSelector(state)
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		actions: bindActionCreators(actions, dispatch)
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
