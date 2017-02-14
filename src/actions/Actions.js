@@ -1,16 +1,11 @@
 export function selectUsers(nameA, nameB) {
-    return (dispatch, getState) => {
-        const {users} = getState();
-
-        dispatch({
-            type: 'SELECT_USERS',
-            payload: {
-                nameA: nameA,
-                nameB: nameB,
-                users: users
-            }
-        });
-    };
+	return {
+		type: 'SELECT_USERS',
+		payload: {
+			nameA: nameA,
+			nameB: nameB
+		}
+	}
 }
 
 export function deleteUser(name) {

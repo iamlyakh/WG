@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {usersWithRatingSelector, userASelector, userBSelector} from '../selectors/selectors';
 import UserList from '../components/UserList';
-import CompareForm from '../components/CompareForm';
+import SelectForm from '../components/SelectForm';
+import CompareTable from '../components/CompareTable';
 import {bindActionCreators } from 'redux';
 import * as actions from '../actions/Actions';
 
 class App extends Component {
 	render() {
-		const {users, columns, actions} = this.props;
+		const {users, columns, actions, userA, userB} = this.props;
 
 		return <div>
-			<UserList users={users} columns={columns} actions={actions}/>
-            <CompareForm actions={actions}/>
+			<UserList users={users} columns={columns}/>
+            <SelectForm actions={actions}/>
+			<CompareTable userA={userA} userB={userB} columns={columns}/>
 		</div>
 	}
 }
@@ -19,11 +22,9 @@ class App extends Component {
 function mapStateToProps(state) {
 	return {
 	    columns: state.columns,
-		users: state.users.map(user => {
-		    return {...user, ...{
-		        rating: (user.winsTotal / user.daysTotal).toFixed(2)
-            }}
-        })
+		users: usersWithRatingSelector(state),
+		userA: userASelector(state),
+		userB: userBSelector(state)
 	}
 }
 
