@@ -1,62 +1,39 @@
 import React, {PropTypes, Component} from 'react'
 
-class UserItem extends Component {
-    render() {
-        const user = this.props.user;
-
-        return <tr>
-            {
-               this.props.columns.map(column => {
-                   return <td key={column.id}>
-                       {user[column.id]}
-                   </td>
-               })
-            }
-        </tr>
-    }
-}
-
-
 export default class UserList extends Component {
-    getUserListHead() {
-        return <tr>
-            {
-                this.props.columns.map((column) => {
-                    return <th key={column.id}>
-                        {column.label}
-                    </th>
-                })
-            }
-        </tr>
-    }
+	renderHead() {
+		return <tr>
+			{
+				this.props.columns.map((column) =>
+					<th key={column.id}>{column.label}</th>
+				)
+			}
+		</tr>
+	}
 
-    getUserList() {
-        return this.props.users.map((user) => {
-            return <UserItem key={user.id} user={user} columns={this.props.columns}/>
-        });
-    }
+	renderRow(user) {
+		return <tr key={user.id}>
+			{
+				this.props.columns.map(column =>
+					<td key={column.id}>{user[column.id]}</td>
+				)
+			}
+		</tr>
+	}
 
-    render() {
+	render() {
 		return <table>
-            <thead>
-            {
-                this.getUserListHead()
-            }
-            </thead>
-            <tbody>
-            {
-                this.getUserList()
-            }
-            </tbody>
+			<thead>
+				{this.renderHead()}
+			</thead>
+			<tbody>
+				{this.props.users.map((user) => this.renderRow(user))}
+			</tbody>
 		</table>
 	}
 }
 
-UserItem.propTypes = {
-    user: PropTypes.object.isRequired
-};
-
 UserList.propTypes = {
-    columns: PropTypes.array.isRequired,
+	columns: PropTypes.array.isRequired,
 	users: PropTypes.array.isRequired
 };

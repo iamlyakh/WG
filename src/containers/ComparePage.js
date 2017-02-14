@@ -8,10 +8,10 @@ import * as actions from '../actions/Actions';
 
 class ComparePage extends Component {
 	render() {
-		const {columns, actions, userA, userB} = this.props;
+		const {selectedUsers, columns, actions, userA, userB} = this.props;
 
 		return <div>
-			<SelectForm actions={actions}/>
+			<SelectForm selectedUsers={selectedUsers} actions={actions}/>
 			<CompareTable userA={userA} userB={userB} columns={columns}/>
 		</div>
 	}
@@ -20,6 +20,7 @@ class ComparePage extends Component {
 function mapStateToProps(state) {
 	return {
 		columns: state.columns,
+		selectedUsers: state.selectedUsers,
 		userA: userASelector(state),
 		userB: userBSelector(state)
 	}
