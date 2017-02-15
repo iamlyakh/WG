@@ -5,7 +5,7 @@ export default class UserList extends Component {
 		return <tr>
 			{
 				this.props.columns.map((column) =>
-					<th key={column.id}>{column.label}</th>
+					<th key={column.id} className='wg-table-cell'>{column.label}</th>
 				)
 			}
 		</tr>
@@ -15,15 +15,15 @@ export default class UserList extends Component {
 		return <tr key={user.id}>
 			{
 				this.props.columns.map(column =>
-					<td key={column.id}>{user[column.id]}</td>
+					<td key={column.id} className='wg-table-cell'>{user[column.id]}</td>
 				)
 			}
 		</tr>
 	}
 
 	render() {
-		return <table>
-			<thead>
+		return <table className='wg-table'>
+			<thead className='wg-table__head'>
 				{this.renderHead()}
 			</thead>
 			<tbody>

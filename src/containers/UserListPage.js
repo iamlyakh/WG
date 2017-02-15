@@ -9,7 +9,9 @@ class UserListPage extends Component {
 	render() {
 		const {users, columns} = this.props;
 
-		return <UserList users={users} columns={columns}/>
+		return <div className='wg-page_user-list'>
+			<UserList users={users} columns={columns}/>
+		</div>
 	}
 }
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {userASelector, userBSelector} from '../selectors/selectors';
+import {userASelector, userBSelector, columnsWithoutNameSelector} from '../selectors/selectors';
 import SelectForm from '../components/SelectForm';
 import CompareTable from '../components/CompareTable';
 import {bindActionCreators } from 'redux';
@@ -10,7 +10,7 @@ class ComparePage extends Component {
 	render() {
 		const {selectedUsers, columns, actions, userA, userB} = this.props;
 
-		return <div>
+		return <div className='wg-page_compare'>
 			<SelectForm selectedUsers={selectedUsers} actions={actions}/>
 			<CompareTable userA={userA} userB={userB} columns={columns}/>
 		</div>
@@ -19,7 +19,7 @@ class ComparePage extends Component {
 
 function mapStateToProps(state) {
 	return {
-		columns: state.columns,
+		columns: columnsWithoutNameSelector(state),
 		selectedUsers: state.selectedUsers,
 		userA: userASelector(state),
 		userB: userBSelector(state)

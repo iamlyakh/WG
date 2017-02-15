@@ -29,10 +29,10 @@ export default class SelectForm extends Component {
 	}
 
 	render() {
-		return <div>
-			<input onChange={::this.setNameA} value={this.state.nameA}/>
-			<input onChange={::this.setNameB} value={this.state.nameB}/>
-			<button onClick={::this.selectUsers}>Сравнить</button>
+		return <div className='wg-select-form'>
+			<input placeholder='Игрок 1' className='wg-select-form__item wg-select-form__item_input wg-input' onChange={::this.setNameA} value={this.state.nameA}/>
+			<input placeholder='Игрок 2' className='wg-select-form__item wg-select-form__item_input wg-input' onChange={::this.setNameB} value={this.state.nameB}/>
+			<button className='wg-select-form__item wg-button' onClick={::this.selectUsers}>Сравнить</button>
 		</div>
 	}
 }

@@ -12,28 +12,21 @@ export default class CompareTable extends Component {
 			}
 
 			if (valA !== valB) {
-				return valA > valB ? 'greater' : 'less';
+				return valA > valB ? 'wg-table-cell_greater' : 'wg-table-cell_less';
 			}
 
-			return 'equal';
+			return 'wg-table-cell_equal';
 		};
 
 		return <tr key={column.id}>
-			<td>{column.label}</td>
-			<td className={getClass(valA, valB)}>{valA}</td>
-			<td className={getClass(valB, valA)}>{valB}</td>
+			<td className='wg-table-cell wg-table-cell_fixed-width wg-table-cell_label'>{column.label}</td>
+			<td className={'wg-table-cell wg-table-cell_fixed-width ' + getClass(valA, valB)}>{valA}</td>
+			<td className={'wg-table-cell  wg-table-cell_fixed-width ' + getClass(valB, valA)}>{valB}</td>
 		</tr>
 	}
 
 	render() {
-		return <table>
-			<thead>
-				<tr>
-					<th>Property</th>
-					<th>User A</th>
-					<th>User B</th>
-				</tr>
-			</thead>
+		return <table className='wg-table'>
 			<tbody>
 				{this.props.columns.map(column => this.renderRow(column))}
 			</tbody>

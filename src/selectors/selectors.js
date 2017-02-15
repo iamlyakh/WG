@@ -18,7 +18,7 @@ export const userASelector = createSelector(
 	usersWithRatingSelector,
 	nameASelector,
 	(users, nameA) => {
-		return users.find(user => user.name === nameA);
+		return users.find(user => user.name === nameA && !user.isHidden);
 	}
 );
 
@@ -27,6 +27,14 @@ export const userBSelector = createSelector(
 	usersWithRatingSelector,
 	nameBSelector,
 	(users, nameB) => {
-		return users.find(user => user.name === nameB);
+		return users.find(user => user.name === nameB && !user.isHidden);
+	}
+);
+
+const columnsSelector = state => state.columns;
+export const columnsWithoutNameSelector = createSelector(
+	columnsSelector,
+	(columns) => {
+		return columns.filter(column => column.id !== 'name');
 	}
 );

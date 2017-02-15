@@ -1,19 +1,152 @@
-html, body {
-	padding: 0;
-	margin: 0;
+@import '~normalize.css';
+
+$gray: #212121;
+$light-gray: #9e9e9e;
+$red: #e11931;
+$yellow: #e6e27c;
+$orange: #f2ba6e;
+$green: #8eca78;
+
+html {
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
 	font-weight: 300;
 }
 
-.greater {
-	background: mediumseagreen;
-}
+.wg {
+	&-page {
+		&__header {
+		}
 
-.less {
-	background: indianred;
-}
+		&__content {
+			margin: 50px 50px;
+		}
 
-.equal {
-	background: coral;
+		&_user-list {
+		}
+
+		&_compare {
+		}
+	}
+
+	&-header {
+		border-bottom: 1px solid $red;
+		padding: 20px 50px;
+
+		&__logo {
+			display: inline-block;
+			color: $red;
+			font-weight: bold;
+		}
+
+		&__menu {
+			display: inline-block;
+			margin: 0 100px;
+		}
+	}
+
+	&-menu {
+		padding: 0;
+
+		&__item {
+			display: inline-block;
+		}
+
+		&-link {
+			display: block;
+			color: $gray;
+			cursor: pointer;
+			padding: 15px;
+			text-decoration: none;
+			text-transform: uppercase;
+
+			&:hover,
+			&_active {
+				color: $red;
+			}
+		}
+	}
+
+	&-table {
+		border-collapse: collapse;
+
+		&__head {
+			border-bottom: 1px solid $light-gray;
+		}
+
+		&-cell {
+			padding: 15px 10px;
+			vertical-align: middle;
+			text-align: center;
+
+			&_fixed-width {
+				width: 200px;
+			}
+
+			&_label {
+				text-align: right;
+			}
+
+			&_greater {
+				background: $green;
+				color: #fff;
+			}
+
+			&_less {
+				background: $red;
+				color: #fff;
+			}
+
+			&_equal {
+				background: $yellow;
+				color: #fff;
+			}
+		}
+	}
+
+	&-select-form {
+		margin: 0 0 20px 220px;
+
+		&__item {
+			display: inline-block;
+			margin-right: 20px;
+
+			&_input {
+				width: 200px;
+			}
+		}
+	}
+
+	&-input {
+		border: none;
+		border-bottom: 1px solid $light-gray;
+		box-sizing: border-box;
+		outline: none;
+		height: 3rem;
+		padding: 0;
+		transition: all 100ms;
+
+		&:focus {
+			border-bottom: 2px solid $red;
+		}
+	}
+
+	&-button {
+		background: none;
+		border: 1px solid $red;
+		color: $red;
+		cursor: pointer;
+		padding: 10px 20px;
+		font-weight: bold;
+		text-transform: uppercase;
+
+		&:hover {
+			background: $red;
+			color: #FFF;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
 }
